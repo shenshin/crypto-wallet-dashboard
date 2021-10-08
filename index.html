@@ -28,19 +28,19 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-3">
-          <h3>Select Network: </h3>
+          <h3 class="h5">Select Network: </h3>
           <select class="form-select" id="chain">
             <!-- Fix 1: What ChainId values are to be used for Testnet? -->
             <!-- I specify chain id in a script -->
           </select>
         </div>
         <div class="col-lg-2">
-          <h3>Currency: </h3>
+          <h3 class="h5">Currency: </h3>
           <select class="form-select" id="quote">
           </select>
         </div>
         <div class="col-lg-7">
-          <h3>Enter wallet address:</h3>
+          <h3 class="h5">Enter wallet address:</h3>
           <!-- Fix 2: Use your own RSK wallet address for the default input value -->
           <!-- I specify an address in a script -->
           <div class="input-group">
@@ -51,10 +51,12 @@
       </div>
       <div class="alert alert-danger" id="error"></div>
       <div class="alert alert-primary" id="loading">Loading</div>
+      
       <div id="info">
-        <h2>Metadata</h2>
+        <img id="network-logo" alt="Network Logo">
+        <h2 class="h4">Metadata</h2>
         <ul id="metadata"></ul>
-        <h2>Balances</h2>
+        <h2 class="h4">Balances</h2>
         <table class="table table-striped" id="tokenTable">
           <thead>
             <tr>

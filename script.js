@@ -35,21 +35,13 @@ async function getTokenData() {
     showLoading(true); // show loading
     showTokenData(false); // hide metadata and balances
 
-    // Fix 5: Use the RSK Testnet chainID as the default
     const chainIndex = Number(document.getElementById('chain').value) || 0;
-    const chainId = blockchains[chainIndex].id;
-    // Fix 4: Use your RSK wallet address for the default input value
-    const address =
-      document.getElementById('address').value ||
-      blockchains[chainIndex].wallet;
+    const network = blockchains[chainIndex];
+    const address = document.getElementById('address').value || network.wallet;
     const quoteCurrIndex = Number(document.getElementById('quote').value || 0);
     const quoteCurr = quoteCurrencies[quoteCurrIndex].name;
-
-    // Fix 6: Use the Covalent API Reference Docs to figure out what
-    // endpoint is to be used in place of #code
-
     const url = new URL(
-      `https://api.covalenthq.com/v1/${chainId}/address/${address}/${endpoint}/?key=${APIKEY}&quote-currency=${quoteCurr}`,
+      `https://api.covalenthq.com/v1/${network.id}/address/${address}/${endpoint}/?key=${APIKEY}&quote-currency=${quoteCurr}`,
     );
 
     // Use Fetch API to get Covalent data
@@ -59,6 +51,7 @@ async function getTokenData() {
     if (!tokens) throw new Error("The wallet doesn't exist");
 
     // Update wallet metadata
+    document.getElementById('network-logo').setAttribute('src', network.image);
     document.getElementById('metadata').innerHTML = `
       <li> Wallet address: ${data.data.address} </li>
       <li> Last update: ${data.data.updated_at} </li>
