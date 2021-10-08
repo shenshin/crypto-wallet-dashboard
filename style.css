@@ -1,0 +1,15 @@
+.rsk-logo, .covalent-logo {
+  height: 5rem;
+}
+.token-icon {
+  width: 30px;
+  height: 30px;
+}
+.table {
+  font-size: 1.2vw;
+}
+.alert, #info {
+  display: none;
+  margin-top: 1rem;
+}
+
